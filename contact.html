@@ -21,6 +21,12 @@
             max-width: 800px; /* Wider form */
             margin: auto;
         }
+        .menu .logo a {
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            font-weight: bold;
+        }
         .form-label {
             font-weight: 600;
         }
@@ -49,9 +55,13 @@
     z-index: 1000;
 }
 
-body {
+    body {
     padding-top: 60px; /* Adjust this to prevent content from being hidden behind the navbar */
-}
+    }
+
+    .menu ul li a:hover {
+            color: #ffcc00;
+        }
 
     </style>
 
@@ -104,7 +114,10 @@ body {
     <nav>
         <div class="menu">
             <div class="logo">
-                <a href="#">Auto Care</a>
+                <a href="#">
+                    <img src="autocare.jpg" alt="Auto Care Logo" style="height: 70px; width: 70px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-right: 10px;">
+                    Auto Care
+                </a>
             </div>
             <ul>
                 <li><a href="index.html">Home</a></li>
