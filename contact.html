@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Auto Care</title>
     <link rel="stylesheet" href="style.css">
@@ -10,23 +10,35 @@
     <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     
     <style>
-        /* Improved Contact Form Styling */
         body {
             background-color: #f8f9fa;
+            padding-top: 70px; /* Adjust for fixed navbar */
         }
         .contact-container {
             background: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 800px; /* Wider form */
+            max-width: 800px;
             margin: auto;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #000;
+            padding: 10px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
         .menu .logo a {
             color: #fff;
             font-size: 24px;
             text-decoration: none;
             font-weight: bold;
+        }
+        .menu ul li a:hover {
+            color: #ffcc00;
         }
         .form-label {
             font-weight: 600;
@@ -42,28 +54,11 @@
             padding: 10px;
             font-size: 16px;
             border-radius: 6px;
+            width: 100%;
         }
         .btn-primary:hover {
             background-color: #0056b3;
         }
-        nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #000000; /* Adjust background if needed */
-    padding: 10px 0;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-    body {
-    padding-top: 60px; /* Adjust this to prevent content from being hidden behind the navbar */
-    }
-
-    .menu ul li a:hover {
-            color: #ffcc00;
-        }
-
     </style>
 
     <!-- Firebase SDK -->
@@ -82,7 +77,6 @@
             measurementId: "G-8MLCP6ZK3F"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
@@ -145,163 +139,9 @@
                     <label for="message" class="form-label">Message</label>
                     <textarea class="form-control" id="message" rows="3" placeholder="Your message..." required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
         </div>
     </div>
 </body>
 </html>
-=======
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Auto Care</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
-    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-    
-    <style>
-        /* Improved Contact Form Styling */
-        body {
-            background-color: #f8f9fa;
-        }
-        .contact-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 800px; /* Wider form */
-            margin: auto;
-        }
-        .menu .logo a {
-            color: #fff;
-            font-size: 24px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .form-label {
-            font-weight: 600;
-        }
-        .form-control {
-            border-radius: 6px;
-            padding: 8px;
-            font-size: 14px;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 6px;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #000000; /* Adjust background if needed */
-    padding: 10px 0;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-    body {
-    padding-top: 60px; /* Adjust this to prevent content from being hidden behind the navbar */
-    }
-
-    .menu ul li a:hover {
-            color: #ffcc00;
-        }
-
-    </style>
-
-    <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDtQ26hMt3wQR3lhXTphmriCgRoH0zLDLc",
-            authDomain: "autocare-41f01.firebaseapp.com",
-            databaseURL: "https://autocare-41f01-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "autocare-41f01",
-            storageBucket: "autocare-41f01.appspot.com",
-            messagingSenderId: "690430179902",
-            appId: "1:690430179902:web:a0be0f5d45283fa2feaf6f",
-            measurementId: "G-8MLCP6ZK3F"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
-
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("contactForm").addEventListener("submit", function(event) {
-                event.preventDefault();
-                
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
-                const message = document.getElementById("message").value;
-                
-                const newMessageRef = push(ref(database, 'messages'));
-                set(newMessageRef, {
-                    name: name,
-                    email: email,
-                    message: message,
-                    timestamp: new Date().toISOString()
-                }).then(() => {
-                    alert("Message sent successfully!");
-                    document.getElementById("contactForm").reset();
-                }).catch(error => {
-                    alert("Error: " + error.message);
-                });
-            });
-        });
-    </script>
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="menu">
-            <div class="logo">
-                <a href="#">
-                    <img src="autocare.jpg" alt="Auto Care Logo" style="height: 70px; width: 70px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-right: 10px;">
-                    Auto Care
-                </a>
-            </div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container mt-5">
-        <div class="contact-container">
-            <h2 class="text-center">Contact Us</h2>
-            <p class="text-center">We would love to hear from you!</p>
-            <form id="contactForm">
-                <div class="mb-2">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-                </div>
-                <div class="mb-2">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-                </div>
-                <div class="mb-2">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="3" placeholder="Your message..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Send Message</button>
-            </form>
-        </div>
-    </div>
-</body>
-</html>
->>>>>>> 31173d64d293593e66c6c1364a43e89eba6de079
