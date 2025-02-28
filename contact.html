@@ -16,10 +16,10 @@
         }
         .contact-container {
             background: #fff;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
+            max-width: 600px;
             margin: auto;
         }
         nav {
@@ -45,14 +45,14 @@
         }
         .form-control {
             border-radius: 6px;
-            padding: 8px;
-            font-size: 14px;
+            padding: 10px;
+            font-size: 16px;
         }
         .btn-primary {
             background-color: #007bff;
             border: none;
-            padding: 10px;
-            font-size: 16px;
+            padding: 12px;
+            font-size: 18px;
             border-radius: 6px;
             width: 100%;
         }
@@ -84,9 +84,14 @@
             document.getElementById("contactForm").addEventListener("submit", function(event) {
                 event.preventDefault();
                 
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
-                const message = document.getElementById("message").value;
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const message = document.getElementById("message").value.trim();
+                
+                if (name === "" || email === "" || message === "") {
+                    alert("Please fill in all fields.");
+                    return;
+                }
                 
                 const newMessageRef = push(ref(database, 'messages'));
                 set(newMessageRef, {
@@ -127,17 +132,17 @@
             <h2 class="text-center">Contact Us</h2>
             <p class="text-center">We would love to hear from you!</p>
             <form id="contactForm">
-                <div class="mb-2">
+                <div class="mb-3">
                     <label for="name" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
                 </div>
-                <div class="mb-2">
-                    <label for="email" class="form-label">Email address</label>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
                 </div>
-                <div class="mb-2">
+                <div class="mb-3">
                     <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="3" placeholder="Your message..." required></textarea>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Your message..." required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
