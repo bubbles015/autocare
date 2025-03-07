@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Maintenance</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.4.2/js/all.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            margin: auto;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .service {
+            width: 300px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .service:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .service i {
+            font-size: 50px;
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+        .service img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>General Car Maintenance</h1>
+        <div class="services-container">
+            <div class="service">
+                <img src="img/change-oil.jpg" alt="Oil Change">
+                <h3>Oil Change</h3>
+                <p>Replacing engine oil and oil filter.</p>
+            </div>            
+            <div class="service">
+                <img src="img/brakes.jpg" alt="Brake Inspection">
+                <h3>Brake Inspection</h3>
+                <p>Checking brake pads, rotors, and fluid.</p>
+            </div>
+            <div class="service">
+                <img src="img/tire.jpg" alt="Tire Maintenance">
+                <h3>Tire Maintenance</h3>
+                <p>Checking air pressure, tread depth, and alignment.</p>
+            </div>
+            <div class="service">
+                <img src="img/battery.jpg" alt="Battery Check">
+                <h3>Battery Check</h3>
+                <p>Testing battery health and cleaning terminals.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-flask"></i>
+                <h3>Fluid Checks</h3>
+                <p>Coolant, brake, transmission, power steering, windshield washer.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-wind"></i>
+                <h3>Air Filter Replacement</h3>
+                <p>Changing engine and cabin air filters.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-link"></i>
+                <h3>Belt and Hose Inspection</h3>
+                <p>Checking for cracks, wear, or leaks.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Lights & Electrical Check</h3>
+                <p>Ensuring all lights, signals, and electronics work properly.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-car"></i>
+                <h3>Suspension & Steering</h3>
+                <p>Inspecting shocks, struts, and steering components.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-cloud-rain"></i>
+                <h3>Wiper Blade Replacement</h3>
+                <p>Ensuring clear visibility during rain.</p>
+            </div>
+        </div>
+        <br>
+        <a href="index.html">Back to Home</a>
+    </div>
+</body>
+</html>
