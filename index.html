@@ -53,6 +53,20 @@
             color: #ffcc00;
         }
 
+        /* Styling the Login button */
+        .menu ul li a.login-btn {
+            background-color: #ffcc00;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .menu ul li a.login-btn:hover {
+            background-color: #e6b800;
+        }
+
         .welcome-container {
             text-align: center;
             padding: 50px 20px;
@@ -163,6 +177,8 @@
                 <li><a href="booking.html">Booking</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
+                <!-- Add Login Button -->
+                <li><a href="login.html" class="login-btn">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -193,25 +209,8 @@
                 <h3>Auto Parts</h3>
                 <p>High-quality auto parts to keep your car performing at its best.</p>
             </div>
-            
-            <style>
-                .service {
-                    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-                }
-            
-                .service:hover {
-                    transform: scale(1.1);
-                    box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.2);
-                }
-            
-                .service i {
-                    transition: transform 0.3s ease-in-out;
-                }
-            
-                .service:hover i {
-                    transform: rotate(15deg);
-                }
-            </style>
-            
+        </div>
+    </div>
+
 </body>
 </html>

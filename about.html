@@ -88,7 +88,21 @@
 
 body {
     padding-top: 60px; /* Adjust this to prevent content from being hidden behind the navbar */
-}
+
+/* Styling the Login button */
+        .menu ul li a.login-btn {
+            background-color: #ffcc00;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .menu ul li a.login-btn:hover {
+            background-color: #e6b800;
+        }
+
 
     </style>
 </head>
@@ -106,6 +120,7 @@ body {
                 <li><a href="booking.html">Booking</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
+				<li><a href="login.html" class="login-btn">Login</a></li>
             </ul>
         </div>
     </nav>
