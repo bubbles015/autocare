@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Management</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    .sidebar {
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      background-color: #343a40;
+      color: white;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Roboto', sans-serif;
+    }
+    .sidebar a {
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      margin: 5px 0;
+    }
+    .sidebar a:hover {
+      background-color: #575d63;
+    }
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+    .logout-button {
+      margin-top: auto;
+      padding: 10px 15px;
+      background-color: #dc3545;
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .logout-button:hover {
+      background-color: #c82333;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 8px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+    .product-image {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .product-card-body {
+      padding: 8px;
+    }
+    .card-title {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .card-text {
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h3 class="text-center text-white">Dashboard</h3>
+    <a href="dashboard.html">Home</a>
+    <a href="addproduct.html">Product Management</a>
+    <a href="#">Orders</a>
+    <a href="#">Customers</a>
+    <a href="#">Reports</a>
+    <a href="#">Settings</a>
+    <a href="#" id="logoutButton" class="logout-button">Logout</a>
+  </div>
+
+  <div class="content">
+    <div class="container mt-5">
+      <h2>Product Management</h2>
+      <div id="alertMessage" class="alert alert-success d-none" role="alert">
+        Product edited successfully!
+      </div>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+        Add Product
+      </button>
+      <div class="row mt-4" id="productCardContainer"></div>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="productForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="productName" class="form-label">Product Name</label>
+                  <input type="text" class="form-control" id="productName" required>
+                </div>
+                <div class="mb-3">
+                  <label for="productCategory" class="form-label">Category</label>
+                  <select class="form-control" id="productCategory" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="Engine">Engine</option>
+                    <option value="Tires">Tires</option>
+                    <option value="Brakes">Brakes</option>
+                    <option value="Electronics">Electronics</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="productPrice" class="form-label">Price</label>
+                  <input type="number" class="form-control" id="productPrice" min="1" required>
+                </div>
+                <div class="mb-3">
+                  <label for="stockQuantity" class="form-label">Stock Quantity</label>
+                  <input type="number" class="form-control" id="stockQuantity" min="1" required>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="productDescription" class="form-label">Description</label>
+              <textarea class="form-control" id="productDescription" rows="2" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="productImage" class="form-label">Product Image</label>
+              <input type="file" class="form-control" id="productImage">
+              <!-- Removed imageNameDisplay -->
+            </div>
+            <button type="submit" class="btn btn-primary" id="saveProductButton">Add Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let editingIndex = -1;
+
+    function renderProductCards() {
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+      const productCardContainer = document.getElementById('productCardContainer');
+      productCardContainer.innerHTML = '';
+
+      products.forEach((product, index) => {
+        const card = document.createElement('div');
+        card.classList.add('col-md-3');
+        card.innerHTML = `
+          <div class="product-card">
+            <img src="${product.image || 'wheel.png'}" class="product-image" alt="Product Image">
+            <div class="product-card-body">
+              <h5 class="card-title">${product.name}</h5>
+              <p class="card-text">Category: ${product.category}</p>
+              <p class="card-text">₱ ${product.price}</p>
+              <p class="card-text">Stock: ${product.stock}</p>
+              <p class="card-text">${product.description}</p>
+              <button class="btn btn-warning btn-sm" onclick="editProduct(${index})">Edit</button>
+              <button class="btn btn-danger btn-sm" onclick="deleteProduct(${index})">Delete</button>
+            </div>
+          </div>
+        `;
+        productCardContainer.appendChild(card);
+      });
+    }
+
+    function deleteProduct(index) {
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+      products.splice(index, 1);
+      localStorage.setItem("products", JSON.stringify(products));
+      renderProductCards();
+    }
+
+    function editProduct(index) {
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+      const product = products[index];
+
+      document.getElementById('productName').value = product.name;
+      document.getElementById('productCategory').value = product.category;
+      document.getElementById('productPrice').value = product.price;
+      document.getElementById('stockQuantity').value = product.stock;
+      document.getElementById('productDescription').value = product.description;
+      document.getElementById('productImage').value = '';
+
+      document.getElementById('addProductModalLabel').innerText = 'Edit Product';
+      document.getElementById('saveProductButton').innerText = 'Save Changes';
+
+      editingIndex = index;
+
+      let modalElement = document.getElementById('addProductModal');
+      let modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+      modalInstance.show();
+    }
+
+    document.getElementById('productForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const productImage = document.getElementById('productImage').files[0];
+
+      if (productImage) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imageURL = e.target.result;
+          saveProduct(imageURL);
+        };
+        reader.readAsDataURL(productImage);
+      } else {
+        const products = JSON.parse(localStorage.getItem("products")) || [];
+        let imageURL = 'wheel.png';
+
+        if (editingIndex >= 0 && products[editingIndex].image) {
+          imageURL = products[editingIndex].image;
+        }
+
+        saveProduct(imageURL);
+      }
+    });
+
+    function saveProduct(imageURL) {
+      const productName = document.getElementById('productName').value.trim();
+      const productCategory = document.getElementById('productCategory').value;
+      const productPrice = parseFloat(document.getElementById('productPrice').value);
+      const stockQuantity = parseInt(document.getElementById('stockQuantity').value);
+      const productDescription = document.getElementById('productDescription').value.trim();
+
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+
+      if (editingIndex >= 0) {
+        products[editingIndex] = {
+          name: productName,
+          category: productCategory,
+          price: productPrice,
+          stock: stockQuantity,
+          description: productDescription,
+          image: imageURL
+        };
+        document.getElementById('alertMessage').innerText = "Product edited successfully!";
+      } else {
+        products.push({
+          name: productName,
+          category: productCategory,
+          price: productPrice,
+          stock: stockQuantity,
+          description: productDescription,
+          image: imageURL
+        });
+        document.getElementById('alertMessage').innerText = "Product added successfully!";
+      }
+
+      localStorage.setItem("products", JSON.stringify(products));
+      document.getElementById('alertMessage').classList.remove('d-none');
+      setTimeout(() => {
+        document.getElementById('alertMessage').classList.add('d-none');
+      }, 3000);
+
+      document.getElementById('productForm').reset();
+      editingIndex = -1;
+      document.getElementById('addProductModalLabel').innerText = 'Add Product';
+      document.getElementById('saveProductButton').innerText = 'Add Product';
+
+      const modalElement = document.getElementById('addProductModal');
+      const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+      modalInstance.hide();
+
+      renderProductCards();
+    }
+
+    window.onload = renderProductCards;
+
+    document.getElementById('logoutButton').addEventListener('click', function () {
+      localStorage.removeItem('user');
+      window.location.href = 'login.html';
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

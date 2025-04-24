@@ -1,0 +1,232 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   General Car Maintenance
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar Styling */
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+    }
+
+    .menu .logo a {
+      color: #fff;
+      font-size: 26px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu .logo img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+
+    .menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .menu ul li a:hover {
+      color: #ffffff;
+    }
+
+    .menu ul li a.login-btn {
+      background-color: #0077ff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .menu ul li a.login-btn:hover {
+      background-color: #ffcc00;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .service {
+      width: 300px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    }
+
+    .service:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .service i {
+      font-size: 50px;
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+
+    .service img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  </style>
+ </head>
+ <body class="bg-gradient-to-r from-[#2f4f57] to-[#4ea1b0] min-h-screen flex flex-col">
+  <!-- Navbar -->
+  <nav class="bg-[#1a1f23] w-full px-7 py-6 text-white text-sm flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+        <img src="autocare.jpg" alt="Auto Care logo" class="w-14 h-14 rounded-full object-cover" />
+        <span class="font-bold text-base md:text-lg">Auto Care</span>
+    </div>
+    <ul class="hidden md:flex space-x-6 items-center">
+        <li><a href="index.html" class="text-xl">Home</a></li>
+        <li><a href="booking.html" class="text-xl">Booking</a></li>
+        <li><a href="about.html" class="text-xl">About</a></li>
+        <li><a href="contact.html" class="text-xl">Contact Us</a></li>
+        <li>
+          <a href="login.html" class="bg-blue-600 hover:bg-yellow-400 text-white px-7 py-4 rounded font-semibold transition-colors">
+            Login
+          </a>
+        </li>
+    </ul>
+  </nav>
+  
+  <!-- Main content container -->
+  <main class="flex-grow flex justify-center items-center px-4 py-12">
+    <section class="bg-[#4f6b71] rounded-xl p-10 max-w-6xl w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-white text-sm">
+      <h2 class="col-span-full text-center font-bold text-xl mb-6">General Car Maintenance</h2>
+
+      <!-- Cards -->
+      <div class="service">
+        <img src="img/change-oil.jpg" alt="Oil Change" />
+        <h3 class="font-semibold text-base mb-1">Oil Change</h3>
+        <p class="text-xs text-center">Replacing engine oil and oil filter.</p>
+      </div>
+
+      <div class="service">
+        <img src="img/brakes.jpg" alt="Brake Inspection" />
+        <h3 class="font-semibold text-base mb-1">Brake Inspection</h3>
+        <p class="text-xs text-center">Checking brake pads, calipers, and fluid.</p>
+      </div>
+
+      <div class="service">
+        <img src="img/tire.jpg" alt="Tire Maintenance" />
+        <h3 class="font-semibold text-base mb-1">Tire Maintenance</h3>
+        <p class="text-xs text-center">Checking air pressure, tread depth, and alignment.</p>
+      </div>
+
+      <div class="service">
+        <img src="img/battery.jpg" alt="Battery Check" />
+        <h3 class="font-semibold text-base mb-1">Battery Check</h3>
+        <p class="text-xs text-center">Testing battery health and cleaning terminals.</p>
+      </div>
+
+      <div class="service">
+        <img src="img/fluid.jpg" alt="Fluid Check" />
+        <h3 class="font-semibold text-base mb-1">Fluid Checks</h3>
+        <p class="text-xs text-center">Coolant, brake, transmission, power steering, windshield washer.</p>
+      </div>
+
+      <div class="service">
+        <img src="img/air-filter.jpg" alt="Air Filter Check" />
+        <h3 class="font-semibold text-base mb-1">Air Filter Replacement</h3>
+        <p class="text-xs text-center">Changing engine air filter.</p>
+      </div>
+
+      <div class="service">
+        <img src="img/Belts-Hose-Inspection.jpg" alt="Belt and Hose Check" />
+        <h3 class="font-semibold text-base mb-1">Belt and Hose Inspection</h3>
+        <p class="text-xs text-center">Checking for cracks, wear, or leaks.</p>
+      </div>
+
+      <div class="service">
+        <img src="img/light.jpg" alt="Light & Electric Check" />
+        <h3 class="font-semibold text-base mb-1">Lights & Electrical Check</h3>
+        <p class="text-xs text-center">Inspecting all lights, signals, and electrical systems.</p>
+      </div>
+
+      <div class="service">
+        <img src="img/suspension.jpg" alt="Suspension Check" />
+        <h3 class="font-semibold text-base mb-1">Suspension & Steering</h3>
+        <p class="text-xs text-center">Inspecting shocks, struts, and steering components.</p>
+      </div>
+
+      <div class="service">
+      <img src="img/wiper.jpg" alt="Wiper Check" />
+        <h3 class="font-semibold text-base mb-1">Wiper Blade Replacement</h3>
+        <p class="text-xs text-center">Ensuring clear visibility during rain.</p>
+      </div>
+
+      <div class="service">
+        <img src="img/transmission" alt="Transmission Service" />
+        <h3 class="font-semibold text-base mb-1">Transmission Service</h3>
+        <p class="text-xs text-center">Flushing and replacing transmission fluid to ensure smooth gear shifts.</p>
+      </div>
+      
+      <div class="service">
+        <img src="img/spark-plug.jpg" alt="Spark Plug Replacement" />
+        <h3 class="font-semibold text-base mb-1">Spark Plug Replacement</h3>
+        <p class="text-xs text-center">Improves engine performance and fuel efficiency.</p>
+      </div>
+    </section>
+  </main>
+ </body>
+</html>

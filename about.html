@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Auto Care</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #222;
+            color: #fff;
+        }
+        .menu .logo a {
+            color: #fff;
+            font-size: 26px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .menu ul li {
+            margin: 0 15px;
+        }
+        .menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .menu ul li a:hover {
+            color: #ffcc00;
+        }
+        .img {
+            width: 100%;
+            height: 350px;
+            background: url('your-about-image.jpg') no-repeat center center/cover;
+        }
+        .about-container {
+            text-align: center;
+            padding: 40px 10px;
+            margin-top: -200px;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .about-text {
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .subtext {
+            font-size: 20px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .content {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .content h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        .content p {
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        .values-list {
+            list-style: none;
+            padding: 0;
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .values-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .values-list li::before {
+            content: '✔';
+            color: #ffcc00;
+            position: absolute;
+            left: 0;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #222;
+            padding: 1px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="menu">
+            <div class="logo">
+                <a href="#">
+                    <img src="autocare.jpg" alt="Auto Care Logo" style="height: 70px; width: 70px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-right: 10px;">
+                    Auto Care
+                </a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="img"></div>
+
+    <div class="about-container">
+        <div class="about-text">About Auto Care</div>
+        <div class="subtext">Your trusted partner in automotive maintenance and repair.</div>
+    </div>
+
+    <div class="content">
+        <h2>Our Mission</h2>
+        <p>Our mission is to provide automotive businesses with an intelligent and integrated supply management system that enhances operational efficiency, reduces costs, and ensures the seamless flow of parts and supplies. Through automation, real-time tracking, and data-driven insights, we empower companies to deliver superior service, minimize downtime, and maintain optimal inventory levels, enabling long-term growth and sustainability.</p>
+        
+        <h2>Our Vision</h2>
+        <p>To be the leading provider of cutting-edge supply chain solutions for the automotive industry, transforming the way businesses manage their parts procurement, inventory, and distribution. Our vision is to enable a smarter, more responsive and connected ecosystem, where all stakeholders—suppliers, distributors, and customers—can effortlessly interact and drive the future of the automotive supply chain.</p>
+
+        <h2>Our Core Values</h2>
+        <ul class="values-list">
+            <li>Customer Satisfaction</li>
+            <li>Professionalism</li>
+            <li>High-Quality Service</li>
+        </ul>
+    </div>
+</body>
+</html>

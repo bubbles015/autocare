@@ -1,0 +1,152 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare Login</title>
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Auto Care Login</h2>
+        <div id="success-alert" class="hidden p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
+             Login Successful! Redirecting...
+        </div>
+        <form id="login-form">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                    <i class="fas fa-envelope"></i> Email
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    <i class="fas fa-lock"></i> Password
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline mb-4 transition duration-300 ease-in-out">
+                Login
+            </button>
+            <button type="button" id="signup-button" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
+                Sign Up
+            </button>
+            <p id="error-message" class="text-red-500 text-sm mt-4"></p>
+            <p id="loading" class="text-gray-500 text-sm mt-4 hidden">Processing...</p>
+        </form>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signup-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm relative">
+            <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Sign Up</h2>
+            <form id="signup-form">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-email">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input id="signup-email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter email" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-password">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <input id="signup-password" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
+                    Create Account
+                </button>
+                <p id="signup-error-message" class="text-red-500 text-sm mt-4"></p>
+                <p id="signup-loading" class="text-gray-500 text-sm mt-4 hidden">Processing...</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+      
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtQ26hMt3wQR3lhXTphmriCgRoH0zLDLc",
+            authDomain: "autocare-41f01.firebaseapp.com",
+            databaseURL: "https://autocare-41f01-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "autocare-41f01",
+            storageBucket: "autocare-41f01.appspot.com",
+            messagingSenderId: "690430179902",
+            appId: "1:690430179902:web:72c183ba21c234e4feaf6f",
+            measurementId: "G-9JSP5DBBRR"
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Login
+        document.getElementById("login-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+            const successAlert = document.getElementById("success-alert");
+            const loading = document.getElementById("loading");
+          
+            errorMessage.textContent = "";
+            loading.style.display = "block";
+          
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                loading.style.display = "none";
+                successAlert.classList.remove("hidden");
+                setTimeout(() => {
+                    window.location.href = "dashboard.html";
+                }, 2000);
+            } catch (error) {
+                loading.style.display = "none";
+                errorMessage.textContent = " " + error.code.replace("auth/", "").replace(/-/g, " ").toUpperCase();
+            }
+        });
+
+        // Open Modal
+        document.getElementById("signup-button").addEventListener("click", () => {
+            document.getElementById("signup-modal").classList.remove("hidden");
+        });
+
+        // Close Modal
+        document.getElementById("close-modal").addEventListener("click", () => {
+            document.getElementById("signup-modal").classList.add("hidden");
+        });
+
+        // Sign Up
+        document.getElementById("signup-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+            const errorMessage = document.getElementById("signup-error-message");
+            const loading = document.getElementById("signup-loading");
+          
+            errorMessage.textContent = "";
+            loading.style.display = "block";
+          
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                loading.style.display = "none";
+                alert("User registered successfully! You can now log in.");
+                document.getElementById("signup-modal").classList.add("hidden");
+            } catch (error) {
+                loading.style.display = "none";
+                errorMessage.textContent = " " + error.code.replace("auth/", "").replace(/-/g, " ").toUpperCase();
+            }
+        });
+    </script>
+</body>
+</html>

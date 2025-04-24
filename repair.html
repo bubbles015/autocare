@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repair & Fixes - Auto Care</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .menu .logo a {
+            color: #fff;
+            font-size: 26px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu .logo img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .menu ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu ul li {
+            margin: 0 10px;
+        }
+
+        .menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .menu ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .login-btn {
+            background-color: #0077ff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .login-btn:hover {
+            background-color: #ffcc00;
+            color: #000;
+        }
+
+        .repair-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .repair-form {
+            background: #ffffff;
+            padding: 40px 60px 40px 40px; /* Right side is now wider */
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .repair-form:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .repair-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .form-label {
+            color: #000000;
+            font-weight: 500;
+        }
+
+        .form-control {
+            background: #ffffff;
+            border: 1px solid #050505;
+            color: #000;
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            transition: 0.3s ease;
+            width: 100%;
+        }
+
+        .form-control:focus {
+            background: rgba(76, 69, 69, 0.3);
+            outline: none;
+            border-color: #ffcc00;
+            box-shadow: 0 0 0 0.2rem #ffcc0055;
+        }
+
+        .form-control::placeholder {
+            color: #000000;
+        }
+
+        .btn-custom {
+            background-color: #ffcc00;
+            color: #000;
+            font-weight: 600;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #ffaa00;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .menu ul li {
+                margin: 8px 0;
+            }
+
+            .repair-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="menu">
+        <div class="logo">
+            <a href="index.html">
+                <img src="autocare.jpg" alt="Auto Care Logo">
+                Auto Care
+            </a>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Repair Form Section -->
+<div class="repair-section">
+    <div class="repair-form">
+        <h2>Repairs & Fixes Request</h2>
+        <form action="repair-submit.html" method="POST">
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name" required>
+            </div>
+            <div class="mb-3">
+                <label for="contact" class="form-label">Contact Number</label>
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter your contact number" required>
+            </div>
+            <div class="mb-3">
+                <label for="vehicleModel" class="form-label">Vehicle Model</label>
+                <input type="text" class="form-control" id="vehicleModel" name="vehicleModel" placeholder="e.g. Toyota Vios 2020" required>
+            </div>
+            <div class="mb-3">
+                <label for="repairDetails" class="form-label">Repair Details</label>
+                <textarea class="form-control" id="repairDetails" name="repairDetails" rows="5" placeholder="Describe the issue..." required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="preferredDate" class="form-label">Preferred Date</label>
+                <input type="date" class="form-control" id="preferredDate" name="preferredDate" required>
+            </div>
+            <button type="submit" class="btn btn-custom">Submit Request</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
